@@ -1,0 +1,39 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/transfer
+    username: root
+    password: fflovexx123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  application:
+    name: transfer-app
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+  jpa:
+    # database dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+    # print sql
+    show-sql: true
+#    hibernate:
+#      # Hibernate DDL (definition language) strategy as update
+#      ddl-auto: update
+
+mybatis:
+  # mapper files wildcard
+  mapper-locations: classpath:/mapper/*.xml
+  # package scan for aliases, used with @Alias
+  type-aliases-package: cn.donsd.pojo
+  # package scan for type handlers
+  #  type-handlers-package: cn.donsd.typehandler
+  # mybatis plugin path
+#  config-location: classpath:mybatis-config.xml
