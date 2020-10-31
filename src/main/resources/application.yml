@@ -27,13 +27,3 @@ spring:
 #    hibernate:
 #      # Hibernate DDL (definition language) strategy as update
 #      ddl-auto: update
-
-mybatis:
-  # mapper files wildcard
-  mapper-locations: classpath:/mapper/*.xml
-  # package scan for aliases, used with @Alias
-  type-aliases-package: cn.donsd.pojo
-  # package scan for type handlers
-  #  type-handlers-package: cn.donsd.typehandler
-  # mybatis plugin path
-#  config-location: classpath:mybatis-config.xml
