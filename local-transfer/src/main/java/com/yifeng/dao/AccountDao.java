@@ -14,4 +14,6 @@ public interface AccountDao {
     void payout(@Param("accountId") String accountId, @Param("amount") double amount);
 
     void credit(@Param("accountId") String accountId, @Param("amount") double amount);
+
+    double getBalance(@Param("accountId") String accountId);
 }

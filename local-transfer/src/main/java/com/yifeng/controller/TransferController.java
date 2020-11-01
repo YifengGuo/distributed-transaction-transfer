@@ -3,7 +3,6 @@ package com.yifeng.controller;
 import com.yifeng.config.Config;
 import com.yifeng.pojo.Account;
 import com.yifeng.service.impl.LocalTransferService;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +40,11 @@ public class TransferController {
 
     @Test
     public void test2_localTransfer() {
-        boolean t = localTransferService.transfer("A", "B", 200);
-        test1();
+        for (int i = 0; i < 100; ++i) {
+            localTransferService.transfer("A", "B", 200);
+            test1();
+            System.out.println();
+        }
     }
 
 }

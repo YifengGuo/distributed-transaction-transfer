@@ -31,4 +31,8 @@
     <update id="credit">
         UPDATE transfer set balance = balance + #{amount} where accountId=#{accountId}
     </update>
+
+    <select id="getBalance" resultType="java.lang.Double">
+        SELECT balance FROM transfer where accountId = #{accountId}
+    </select>
 </mapper>
