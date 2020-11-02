@@ -1,4 +1,4 @@
-package com.yifeng.bank.a;
+package com.yifeng.bank.b;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,13 +8,16 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * Created by guoyifeng on 11/2/20
+ *
+ * act as service provider
+ * service would be invoked by bank-service-A
  */
 @SpringBootApplication
 @EnableEurekaClient
+@EnableFeignClients
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = {"com.yifeng.bank.a.rpc"})
-public class BankAService {
+public class BankBService {
     public static void main(String[] args) {
-        SpringApplication.run(BankAService.class, args);
+        SpringApplication.run(BankBService.class, args);
     }
 }

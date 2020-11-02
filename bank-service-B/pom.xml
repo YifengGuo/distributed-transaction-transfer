@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bank-service-A</artifactId>
+    <artifactId>bank-service-B</artifactId>
 
     <dependencies>
         <dependency>
@@ -52,12 +52,6 @@
             <scope>test</scope>
             <version>${spring-boot.version}</version>
         </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.kafka</groupId>-->
-        <!--            <artifactId>spring-kafka</artifactId>-->
-        <!--            <version>${spring-boot.version}</version>-->
-        <!--        </dependency>-->
 
 
         <!-- storage layer -->

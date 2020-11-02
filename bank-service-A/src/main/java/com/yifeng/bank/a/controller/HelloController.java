@@ -1,5 +1,6 @@
 package com.yifeng.bank.a.controller;
 
+import com.yifeng.bank.a.rpc.BankBClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -16,13 +17,30 @@ import java.util.List;
  */
 @RestController
 public class HelloController {
-    @Autowired
-    private DiscoveryClient client;
 
+    @Autowired
+    private BankBClient bankBClient;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    /**
+     * test rpc
+     * @return
+     */
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String hello() {
+       return bankBClient.hello();
+    }
+
+    /**
+     * test service discover client
+     * @return
+     */
+    @RequestMapping(value = "/discover-client", method = RequestMethod.GET)
     public String index() {
-        List<String> services = client.getServices();
-        List<ServiceInstance> instances = client.getInstances("bank-service-A");
+        List<String> services = discoveryClient.getServices();
+        List<ServiceInstance> instances = discoveryClient.getInstances("bank-service-A");
         System.out.println(services);
         for (ServiceInstance instance : instances) {
             // 10.17.37.139  BANK-SERVICE-A

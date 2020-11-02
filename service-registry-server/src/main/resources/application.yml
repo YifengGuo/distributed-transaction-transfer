@@ -4,6 +4,9 @@ server:
 eureka:
   instance:
     hostname: localhost
+    # renew registered service
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
   client:
     register-with-eureka: false  # disable self-registered
     fetch-registry: false

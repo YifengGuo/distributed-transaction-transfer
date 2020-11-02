@@ -12,6 +12,8 @@
         <module>local-transfer</module>
         <module>service-registry-server</module>
         <module>bank-service-A</module>
+        <module>bank-service-B</module>
+        <module>transfer-service-commons</module>
     </modules>
 
     <properties>
