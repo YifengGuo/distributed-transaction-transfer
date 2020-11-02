@@ -22,13 +22,13 @@ public class CoordinatorController {
     }
 
     @RequestMapping("/register-global-transaction")
-    public String registerGlobalTnx() {
+    public String registerGlobalTxn() {
         // TODO: return XID
         return "";
     }
 
     @RequestMapping("/register-branch-transaction")
-    public String registerBranchTnx() {
+    public String registerBranchTxn() {
         // TODO: return branchId
         return "";
     }
