@@ -1,0 +1,35 @@
+server:
+  port: 8033
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+
+spring:
+  datasource: # second mysql instance deployed on Ali cloud for bankB
+    url: jdbc:mysql://127.0.0.1:3306/coordinator
+    username: root
+    password: Mysq1r0Ot135
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  application:
+    name: transaction-coordinator
+
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+  jpa:
+    # database dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+    # print sql
+    show-sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+    fetch-registry: false
+    registry-fetch-interval-seconds: 30
