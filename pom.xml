@@ -11,17 +11,35 @@
     <modules>
         <module>local-transfer</module>
         <module>service-registry-server</module>
+        <module>bank-service-A</module>
     </modules>
 
     <properties>
         <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
         <slf4j.version>1.7.25</slf4j.version>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     </properties>
 
 
     <dependencies>
 
+
+
     </dependencies>
+
+    <dependencyManagement>
+<!--        <dependencies>-->
+<!--            <dependency> <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring‐boot‐dependencies</artifactId>-->
+<!--                <version>${spring-boot.version}</version>-->
+<!--            </dependency>-->
+
+<!--            <dependency> <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring‐cloud‐dependencies</artifactId>-->
+<!--                <version>${spring-cloud.version}</version>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -35,7 +53,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>
