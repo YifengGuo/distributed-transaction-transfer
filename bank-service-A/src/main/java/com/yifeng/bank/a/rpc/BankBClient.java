@@ -2,6 +2,7 @@ package com.yifeng.bank.a.rpc;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -10,9 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "bank-service-B", fallback = BankBClientFallback.class)
 public interface BankBClient {
 
-    @GetMapping("/transfer/bank-b/hello")
+    @GetMapping("/bank-b/hello")
     String hello();
 
-    @GetMapping("/transfer/bank-b/transfer")
+    @GetMapping("/bank-b/transfer")
     String transfer(@RequestParam("amount") Double amount);
+
+    @GetMapping("/bank-b/register-service")
+    String registerResourceManager(@RequestParam("serviceName") String serviceName);
+
+    @GetMapping("/bank-b/register-branch-transaction")
+    String registerBranchTransaction();
 }
