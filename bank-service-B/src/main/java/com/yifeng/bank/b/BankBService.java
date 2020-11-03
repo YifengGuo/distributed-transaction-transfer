@@ -14,7 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.yifeng.bank.b.rpc"})
 @EnableDiscoveryClient
 public class BankBService {
     public static void main(String[] args) {
