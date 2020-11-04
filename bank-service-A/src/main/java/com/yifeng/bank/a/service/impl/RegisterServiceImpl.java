@@ -1,5 +1,6 @@
 package com.yifeng.bank.a.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.yifeng.bank.a.rpc.CoordinatorClient;
 import com.yifeng.bank.a.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,11 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public String registerResourceManager(String serviceName) {
         return coordinatorClient.registerService(serviceName);
+    }
+
+    @Override
+    public String registerGlobalTransaction(JSONObject payload) {
+        return coordinatorClient.registerGlobalTxn(payload);
     }
 
     @Override
