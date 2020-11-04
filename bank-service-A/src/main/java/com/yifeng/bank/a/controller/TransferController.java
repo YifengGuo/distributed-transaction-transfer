@@ -5,13 +5,14 @@ import com.yifeng.bank.a.dao.AccountDao;
 import com.yifeng.bank.a.manager.TwoPhaseCommitTransactionManager;
 import com.yifeng.bank.a.rpc.BankBClient;
 import com.yifeng.bank.a.service.impl.RegisterServiceImpl;
+import com.yifeng.bank.a.util.SessionFactoryUtils;
 import com.yifeng.commons.constant.BankEnum;
 import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +33,9 @@ public class TransferController {
     @Autowired
     BankBClient bankBClient;
 
-    @Autowired
-    AccountDao accountMapper;
+    private SqlSession session = SessionFactoryUtils.getSession();
+
+    private AccountDao accountMapper = session.getMapper(AccountDao.class);
 
     @Autowired
     RegisterServiceImpl registerService;
