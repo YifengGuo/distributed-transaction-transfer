@@ -1,6 +1,6 @@
 package com.yifeng.bank.a.controller;
 
-import com.yifeng.bank.a.manager.TransactionManager;
+import com.yifeng.bank.a.manager.TwoPhaseCommitTransactionManager;
 import com.yifeng.bank.a.rpc.BankBClient;
 import com.yifeng.bank.a.service.impl.RegisterServiceImpl;
 import com.yifeng.commons.constant.BankEnum;
@@ -23,7 +23,7 @@ public class TransferController {
     private static final Logger LOG = LoggerFactory.getLogger(TransferController.class);
 
     @Autowired
-    TransactionManager transactionManager;
+    TwoPhaseCommitTransactionManager transactionManager;
 
     @Autowired
     BankBClient bankBClient;
@@ -75,6 +75,6 @@ public class TransferController {
 
     private boolean validBank(String bank) {
         return Arrays.stream(BankEnum.values())
-                .anyMatch(e -> e.name().equals(bank));
+                .anyMatch(e -> e.getName().equals(bank));
     }
 }

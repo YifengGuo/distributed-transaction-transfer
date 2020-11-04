@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * it holds global transaction and manages life cycle of transaction and coordinates each Resource Manager (bank service)
  */
 @Component
-public class TransactionManager {
+public class TwoPhaseCommitTransactionManager {
 
     @Autowired
     CoordinatorClient coordinatorClient;
