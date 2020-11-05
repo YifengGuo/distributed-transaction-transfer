@@ -88,7 +88,6 @@ public class CoordinatorController {
 
     @RequestMapping(value = "/branch-report", method = RequestMethod.POST)
     public String handleBranchTransactionReport(@RequestBody JSONObject payload) {
-        // TODO
         try {
             String XID = payload.getString("xid");
             String branchId = payload.getString("branch_id");

@@ -2,7 +2,6 @@ package com.yifeng.bank.a.rpc;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import static com.yifeng.commons.constant.TransferServiceConstant.*;
 
@@ -21,5 +20,10 @@ public class CoordinatorClientFallback implements CoordinatorClient {
     @Override
     public String registerBranchTransaction(String XID) {
         return REGISTER_BRANCH_TRANSACTION_FAILED;
+    }
+
+    @Override
+    public String handleBranchTransactionReport(JSONObject payload) {
+        return HANDLE_BRANCH_TRANSACTION_FAILED;
     }
 }

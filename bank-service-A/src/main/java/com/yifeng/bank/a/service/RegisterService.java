@@ -9,4 +9,6 @@ public interface RegisterService {
     String registerGlobalTransaction(JSONObject payload);
 
     String registerBranchTransaction(String XID);
+
+    String handleBranchTransactionReport(JSONObject payload);
 }

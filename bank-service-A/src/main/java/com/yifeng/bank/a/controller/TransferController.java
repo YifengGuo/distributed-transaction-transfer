@@ -101,11 +101,11 @@ public class TransferController {
 
         // step 3: bank A registers branch txn, write db and undo_log, commit branch txn
         String bankABranchId = registerService.registerBranchTransaction(XID);
-        handleSourceBankBranchTransaction(XID, bankABranchId, sourceBankAccount, amount);
+        boolean transactionBranchAResult = handleSourceBankBranchTransaction(XID, bankABranchId, sourceBankAccount, amount);
 
         // TODO: step 4: bank B registers branch txn, write db and undo_log, commit branch txn
 
-        // TODO: step 5: TM commit global txn
+        // TODO: step 5: TM commit global txn if all branches succeeded, otherwise do global fall back
 
         // TODO: step 6: RM delete undo_log
 
@@ -176,14 +176,21 @@ public class TransferController {
             // commit txn here to release resource retention quickly
             session.commit();
         } catch (Exception e) {
-            // TODO: add api in TC to handle branch txn result
-            // TODO: report failure to TC
-
+            // report failure to TC
+            JSONObject requestBody = new JSONObject();
+            requestBody.put("xid", XID);
+            requestBody.put("branch_id", branchId);
+            requestBody.put("result", false);
+            registerService.handleBranchTransactionReport(requestBody);
             return false;
         }
 
-        // TODO: report success to TC
-
+        // report success to TC
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("xid", XID);
+        requestBody.put("branch_id", branchId);
+        requestBody.put("result", true);
+        registerService.handleBranchTransactionReport(requestBody);
         return true;
     }
 

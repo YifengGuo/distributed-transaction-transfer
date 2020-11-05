@@ -16,6 +16,8 @@ public class TransferServiceConstant {
 
     public static final String REGISTER_BRANCH_TRANSACTION_FAILED = "register-branch-transaction-failed";
 
+    public static final String HANDLE_BRANCH_TRANSACTION_FAILED = "handle-branch-transaction-failed";
+
     // transaction key
     public static final String TRANSACTION_MANAGER_ID = "transaction_manager_id";
 

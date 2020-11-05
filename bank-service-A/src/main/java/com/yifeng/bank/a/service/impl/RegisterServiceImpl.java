@@ -26,4 +26,9 @@ public class RegisterServiceImpl implements RegisterService {
     public String registerBranchTransaction(String XID) {
         return null;
     }
+
+    @Override
+    public String handleBranchTransactionReport(JSONObject payload) {
+        return coordinatorClient.handleBranchTransactionReport(payload);
+    }
 }
