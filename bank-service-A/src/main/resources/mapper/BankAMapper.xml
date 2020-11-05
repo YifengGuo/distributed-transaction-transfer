@@ -28,6 +28,6 @@
     </update>
 
     <select id="getBalance" resultType="java.lang.Double">
-        SELECT account_bank_A FROM transfer where accountId = #{accountId}
+        SELECT balance FROM account_bank_A where accountId = #{accountId}
     </select>
 </mapper>
