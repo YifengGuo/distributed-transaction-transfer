@@ -16,5 +16,5 @@ public interface CoordinatorClient {
     String registerGlobalTxn(@RequestBody JSONObject payload);
 
     @GetMapping("/coordinator/register-branch-transaction")
-    String registerBranchTransaction();
+    String registerBranchTransaction(@RequestParam("XID") String XID);
 }

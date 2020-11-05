@@ -23,5 +23,11 @@ public class TransferServiceConstant {
 
     public static final String TARGET_BANK = "target_bank";
 
+    // undolog path
+    public static final String BANK_A_UNDO_LOG_PATH = "bank-service-A/src/main/java/com/yifeng/bank/a/undolog/";
+
+    public static final String BANK_B_UNDO_LOG_PATH = "bank-service-B/src/main/java/com/yifeng/bank/b/undolog/";
+
+
 
 }

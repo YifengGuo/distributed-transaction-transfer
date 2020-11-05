@@ -17,7 +17,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public String registerBranchTransaction() {
-        return null;
+    public String registerBranchTransaction(String XID) {
+        return coordinatorClient.registerBranchTransaction(XID);
     }
 }

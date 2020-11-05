@@ -23,7 +23,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public String registerBranchTransaction() {
+    public String registerBranchTransaction(String XID) {
         return null;
     }
 }

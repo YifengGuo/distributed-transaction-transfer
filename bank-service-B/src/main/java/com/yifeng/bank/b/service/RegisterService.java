@@ -4,5 +4,5 @@ public interface RegisterService {
 
     String registerResourceManager(String serviceName);
 
-    String registerBranchTransaction();
+    String registerBranchTransaction(String XID);
 }

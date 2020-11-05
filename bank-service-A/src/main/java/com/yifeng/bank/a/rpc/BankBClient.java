@@ -21,5 +21,5 @@ public interface BankBClient {
     String registerResourceManager(@RequestParam("serviceName") String serviceName);
 
     @GetMapping("/bank-b/register-branch-transaction")
-    String registerBranchTransaction();
+    String registerBranchTransaction(@RequestParam("XID") String XID);
 }

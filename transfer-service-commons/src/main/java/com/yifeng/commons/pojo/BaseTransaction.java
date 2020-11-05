@@ -9,11 +9,11 @@ import java.util.Objects;
  */
 public class BaseTransaction {
 
-    private String transactionManagerId;
+    protected String transactionManagerId;
 
-    private String sourceBankId;
+    protected String sourceBankId;
 
-    private String targetBankId;
+    protected String targetBankId;
 
     public BaseTransaction(String transactionManagerId, String sourceBankId, String targetBankId) {
         this.transactionManagerId = transactionManagerId;

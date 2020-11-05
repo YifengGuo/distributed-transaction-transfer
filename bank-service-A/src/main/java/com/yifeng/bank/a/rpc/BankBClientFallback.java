@@ -26,7 +26,7 @@ public class BankBClientFallback implements BankBClient {
     }
 
     @Override
-    public String registerBranchTransaction() {
+    public String registerBranchTransaction(String XID) {
         return REGISTER_BRANCH_TRANSACTION_FAILED;
     }
 }
