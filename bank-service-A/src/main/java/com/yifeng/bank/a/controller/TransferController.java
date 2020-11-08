@@ -237,7 +237,6 @@ public class TransferController {
     private boolean handleSourceBankBranchTransaction(String XID, String branchId,
                                                       String accountId, double amount) {
         try {
-            int i = 1 / 0;
             // write db
             accountMapper.payout(accountId, amount);
             // write undo_log
