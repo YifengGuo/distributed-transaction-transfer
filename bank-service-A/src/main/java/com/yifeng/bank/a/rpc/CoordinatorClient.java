@@ -21,4 +21,7 @@ public interface CoordinatorClient {
 
     @PostMapping("/coordinator/branch-report")
     String handleBranchTransactionReport(@RequestBody JSONObject payload);
+
+    @GetMapping("/coordinator/close-global-transaction")
+    boolean closeGlobalTransaction(@RequestParam("XID") String XID);
 }

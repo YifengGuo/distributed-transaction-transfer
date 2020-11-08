@@ -24,11 +24,16 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public String registerBranchTransaction(String XID) {
-        return null;
+        return coordinatorClient.registerBranchTransaction(XID);
     }
 
     @Override
     public String handleBranchTransactionReport(JSONObject payload) {
         return coordinatorClient.handleBranchTransactionReport(payload);
+    }
+
+    @Override
+    public boolean closeGlobalTransaction(String XID) {
+        return coordinatorClient.closeGlobalTransaction(XID);
     }
 }

@@ -26,4 +26,9 @@ public class CoordinatorClientFallback implements CoordinatorClient {
     public String handleBranchTransactionReport(JSONObject payload) {
         return HANDLE_BRANCH_TRANSACTION_FAILED;
     }
+
+    @Override
+    public boolean closeGlobalTransaction(String XID) {
+        return false;
+    }
 }

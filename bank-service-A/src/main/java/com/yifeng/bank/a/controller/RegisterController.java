@@ -20,7 +20,7 @@ public class RegisterController {
 
 
     @RequestMapping("/register-branch-transaction")
-    public String registerBranchTransaction() {
-        return null;
+    public String registerBranchTransaction(@RequestParam("XID") String XID) {
+        return registerService.registerBranchTransaction(XID);
     }
 }

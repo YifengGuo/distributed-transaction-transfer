@@ -18,7 +18,7 @@ public class CoordinatorController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CoordinatorController.class);
 
-    private static final List<String> REGISTERED_SERVICES = new ArrayList<>();
+    private static final Set<String> REGISTERED_SERVICES = new HashSet<>();
 
     // key: XID
     private static final Map<String, BaseTransaction> REGISTERED_GLOBAL_TRANSACTIONS = new HashMap<>();
@@ -30,6 +30,7 @@ public class CoordinatorController {
     @RequestMapping(value = "/register-service", method = RequestMethod.GET)
     public String register(@RequestParam String serviceName) {
         try {
+            // in production service name shall be added with random postfix to be unique
             REGISTERED_SERVICES.add(serviceName);
             LOG.info("service {} registered on TC", serviceName);
             return REGISTER_SERVICE_SUCCESS;
@@ -76,6 +77,7 @@ public class CoordinatorController {
                     v = new HashMap<>();
                 }
                 v.put(branchId, branchTransaction);
+                LOG.info("current branch map is {}", REGISTERED_BRANCH_TRANSACTIONS.get(XID));
                 return v;
             });
             LOG.info("Generate branchId {} under XID {}", branchId, XID);
@@ -97,14 +99,33 @@ public class CoordinatorController {
             } else {
                 REGISTERED_BRANCH_TRANSACTIONS.get(XID).get(branchId).setState(BranchTransactionState.FAILURE);
             }
+            LOG.info("received branch txn {}, result is {}", branchId, branchTxnResult);
             return "OK";
         } catch (Exception e) {
             LOG.error("error in handling branch transaction", e);
-            throw new RuntimeException(e.getMessage());
+            return "error";
         }
     }
 
+    @RequestMapping(value = "/close-global-transaction", method = RequestMethod.GET)
+    public boolean closeGlobalTransaction(@RequestParam("XID") String XID) {
+        try {
+            // remove service name in set and mappings in map
+            BaseTransaction baseTransaction = REGISTERED_GLOBAL_TRANSACTIONS.get(XID);
+            REGISTERED_SERVICES.remove(baseTransaction.getSourceBankId());
+            REGISTERED_SERVICES.remove(baseTransaction.getTargetBankId());
+            REGISTERED_SERVICES.remove(baseTransaction.getTransactionManagerId());
 
-    // TODO: when two branch send complete msg to TC, if all succeed, ask TM to commit global txn
-    // if one of branch txn was failed, ask TM to roll back global transaction
+            REGISTERED_GLOBAL_TRANSACTIONS.remove(XID);
+
+            REGISTERED_BRANCH_TRANSACTIONS.remove(XID);
+
+            LOG.info("global txn {} has been deleted", XID);
+
+        } catch (Exception e) {
+            LOG.error("error in closing global transaction, please retry... {}", e.getMessage());
+            return false;
+        }
+        return true;
+    }
 }
