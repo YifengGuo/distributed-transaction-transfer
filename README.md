@@ -26,6 +26,8 @@
     * 两个bank service进程，连接不同的数据库，其中一个作为消费者调用另一个service，通过feign实现远程调用。
     * Transaction Coordinator为独立进程，处理两个银行进程的事务相关请求，并维护全局和分支事务metadata
     * 具体的协议实现
+    * what's next: 
+        * mybatis可以采用spring-boot官方的template，当前实现对于多线程的支持不好
     * 实验截图：
         * 事务成功：
         ![](screen_shots/success/registerApp.jpg)
